@@ -77,16 +77,17 @@ class GamePlay extends JPanel implements KeyListener, MouseListener{
 				g.drawString("Blue's Turn:",697, 220);
 						
 			}
+			if(flag == 0 && dice!=6) {  //player = (player + 1) % 4; this can also be used
+				if(player==3) {
+					player = 0;
+				}
+				else {
+				player = player + 1;
+			}
+			}
 			
 		}
-		if(flag == 0 && dice!=6) {  //player = (player + 1) % 4; this can also be used
-			if(player==3) {
-				player = 0;
-			}
-			else {
-			player = player + 1;
-		}
-		}
+		
 		
 	}
 	public void keyPressed(KeyEvent e) {
