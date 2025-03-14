@@ -41,6 +41,7 @@ class GamePlay extends JPanel implements KeyListener, MouseListener{
 	public void paint(Graphics g) {
 		bl.draw((Graphics2D)g);
 		mp.draw((Graphics2D) g);
+		Graphics2D g2 = (Graphics2D) g;
 		
 		if(mp.pl[player].coin == 4) {
 			g.setColor(Color.MAGENTA);
@@ -57,12 +58,83 @@ class GamePlay extends JPanel implements KeyListener, MouseListener{
 			
 			g.setColor(Color.ORANGE);
 			g.fillRect(680,180,180,250);
-			g.setColor(Color.BLACK);
-			g.drawRect(700,250,140,140);
-			g.setFont(new Font("algerian", Font.BOLD, 100));
-			g.drawString(""+dice, 740, 350);
+			g.setColor(Color.RED);
+			g.fillRect(700,250,140,140);
+			//g.setFont(new Font("algerian", Font.BOLD, 100));
+			if(dice == 1) {
+				g.setColor(Color.BLACK);
+				g.fillOval(755,303,30,30);
+				g.setColor(Color.WHITE);
+				g2.setStroke(new BasicStroke(2));
+				g.drawOval(755,303,30,30);
+			}else if(dice == 2) {
+				g.setColor(Color.BLACK);
+				g.fillOval(720,343,30,30);
+				g.fillOval(790,270,30,30);
+				g.setColor(Color.WHITE);
+				g2.setStroke(new BasicStroke(2));
+				g.drawOval(720,343,30,30);
+				g.drawOval(790,270,30,30);
+			}else if(dice == 3) {
+				g.setColor(Color.BLACK);
+				g.fillOval(720,343,30,30);
+				g.fillOval(754,306,30,30);
+				g.fillOval(790,270,30,30);
+				g.setColor(Color.WHITE);
+				g2.setStroke(new BasicStroke(2));
+				g.drawOval(720,343,30,30);
+				g.drawOval(754,306,30,30);
+				g.drawOval(790,270,30,30);
+				
+			}else if(dice == 4) {
+				g.setColor(Color.BLACK);
+				g.fillOval(720,270,30,30);
+				g.fillOval(720,340,30,30);
+				g.fillOval(790,270,30,30);
+				g.fillOval(790,340,30,30);
+				g.setColor(Color.WHITE);
+				g2.setStroke(new BasicStroke(2));
+				g.drawOval(720,270,30,30);
+				g.drawOval(720,340,30,30);
+				g.drawOval(790,270,30,30);
+				g.drawOval(790,340,30,30);
+				
+			}else if(dice == 5) {
+				g.setColor(Color.BLACK);
+				g.fillOval(720,270,30,30);
+				g.fillOval(720,340,30,30);
+				g.fillOval(790,270,30,30);
+				g.fillOval(790,340,30,30);
+				g.fillOval(755,303,30,30);
+				g.setColor(Color.WHITE);
+				g2.setStroke(new BasicStroke(2));
+				g.drawOval(720,270,30,30);
+				g.drawOval(720,340,30,30);
+				g.drawOval(790,270,30,30);
+				g.drawOval(790,340,30,30);
+				g.drawOval(755,303,30,30);
+				
+			}else {
+				g.setColor(Color.BLACK);
+				g.fillOval(720,270,30,30);
+				g.fillOval(720,340,30,30);
+				g.fillOval(790,270,30,30);
+				g.fillOval(790,340,30,30);
+				g.fillOval(755,270,30,30);
+				g.fillOval(755,340,30,30);
+				g.setColor(Color.WHITE);
+				g2.setStroke(new BasicStroke(2));
+				g.drawOval(720,270,30,30);
+				g.drawOval(720,340,30,30);
+				g.drawOval(790,270,30,30);
+				g.drawOval(790,340,30,30);
+				g.drawOval(755,270,30,30);
+				g.drawOval(755,340,30,30);
+				
+			}
+			//g.drawString(""+dice, 740, 350); //for Number based dice
 			
-			g.setFont(new Font("arial", Font.BOLD, 26));
+			g.setFont(new Font("arial", Font.BOLD+Font.ITALIC, 26));
 			if(player == 0) {
 				g.setColor(Color.RED);
 				g.drawString("Red's Turn:",697,220);
