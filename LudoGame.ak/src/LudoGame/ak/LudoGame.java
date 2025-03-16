@@ -30,8 +30,14 @@ class GamePlay extends JPanel implements KeyListener, MouseListener{
 	int flag = 0;
 	int roll = 0;
 	int gameOver = 0;
+	//playerPercentage plper = new playerPercentage();
+	int redPer = 0;
+	int greenPer = 0;
+	int yellowPer = 0;
+	int bluePer = 0;
 	
-	public GamePlay() {
+		
+    public GamePlay() {
 		setFocusTraversalKeysEnabled(false);
 		requestFocus();
 		bl = new boardLayout(80,50);
@@ -55,7 +61,41 @@ class GamePlay extends JPanel implements KeyListener, MouseListener{
 			
 		}
 		else if(dice!=0) {
+			g.setFont(new Font("arial",Font.BOLD + Font.ITALIC,22));
 			
+			g.setColor(Color.BLACK);
+			g.fillOval(140,200,60,30);
+			g.setColor(Color.WHITE);
+			if(Integer.toString(redPer).length()<2) {
+			g.drawString(""+redPer+"%", 153, 223);
+			}else if(Integer.toString(redPer).length()==2) {
+				g.drawString(""+redPer+"%", 147, 223);
+			}
+			g.setColor(Color.BLACK);
+			g.fillOval(410,200,60,30);
+			g.setColor(Color.WHITE);
+			if(Integer.toString(greenPer).length()<2){
+            g.drawString(""+greenPer+"%", 423, 223);
+			}else if(Integer.toString(greenPer).length()==2) {
+				 g.drawString(""+greenPer+"%", 417, 223);
+			}
+            g.setColor(Color.BLACK);
+			g.fillOval(410,320,60,30);
+			g.setColor(Color.WHITE);
+			if(Integer.toString(yellowPer).length()<2) {
+            g.drawString(""+yellowPer+"%", 423, 343);
+		     }else if(Integer.toString(yellowPer).length()==2) {
+		    	 g.drawString(""+yellowPer+"%", 417, 343);
+		     }
+            g.setColor(Color.BLACK);
+			g.fillOval(140,320,60,30);
+			g.setColor(Color.WHITE);
+			if(Integer.toString(bluePer).length()<2){
+            g.drawString(""+bluePer+"%", 153, 343);
+		    }else if(Integer.toString(bluePer).length()==2) {
+		    	 g.drawString(""+bluePer+"%", 147, 343);	
+		    }	 
+            
 			g.setColor(Color.ORANGE);
 			g.fillRect(680,180,180,250);
 			g.setColor(Color.RED);
@@ -160,15 +200,16 @@ class GamePlay extends JPanel implements KeyListener, MouseListener{
 			}
 			
 		}
-		
-		
 	}
+		
+		
+	
 	public void keyPressed(KeyEvent e) {
 		
 		if(e.getKeyCode()==KeyEvent.VK_ENTER && flag == 0 && gameOver == 0) {
 			Random r = new Random();
 			dice = r.nextInt(6) + 1;
-            repaint();
+			 repaint();
             
            for(int i = 0; i<4; i++) {
 			if(mp.pl[player].pa[i].current==-1 && dice == 6) {
@@ -281,7 +322,31 @@ class GamePlay extends JPanel implements KeyListener, MouseListener{
 		    }
 				
 				
-			}repaint();
+			}
+	    
+	    //percentage calculator logic 
+	    for(int j = 0; j<4; j++) {
+	    int t = 0;
+	    for(int i = 0; i<4; i++) {
+	    	if(mp.pl[(player+j)%4].pa[i].current != -1) {
+	    		t += mp.pl[(player+j)%4].pa[i].current;
+	    	}
+	    }
+	    
+	        if((player + j)%4 == 0) {
+		    	redPer = (int) (t*100.0)/224;
+		     }else if((player + j)%4 == 1) {
+		    	greenPer = (int) (t*100.0)/224;
+		    }else if((player + j)%4 == 2) {
+		    	yellowPer = (int) (t*100.0)/224;
+		    }else if((player + j)%4 == 3) {
+		    	bluePer = (int) (t*100.0)/224;
+		    }
+		    
+	    }
+	    
+	    
+	   repaint();
 	}
 			
 }
@@ -580,3 +645,4 @@ class Pawn{
 		
 }
 }
+
