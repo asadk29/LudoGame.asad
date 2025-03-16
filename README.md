@@ -1,7 +1,5 @@
 # LudoGame.asad
 
-# LudoGame.asad
-
 ## Description:
 - A Multi Player Ludo Game built using Java (Swing and AWT)
 
